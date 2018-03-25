@@ -17,7 +17,7 @@ class AnswerTest {
     @Test
     @DisplayName("Initialisation")
     public void AnswerInitialisation(){
-        new Answer(0);
+        new Answer(0, "");
     }
 
 
@@ -25,7 +25,7 @@ class AnswerTest {
     @MethodSource("badNumbers")
     @DisplayName("Number check")
     public void badNumberTest(int num){
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> new Answer(num));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> new Answer(num, ""));
     }
 
     private static Stream<Arguments> badNumbers() {
@@ -40,7 +40,7 @@ class AnswerTest {
     @MethodSource("goodNumbers")
     @DisplayName("Good numbers check")
     public void goodNumberTest(int num){
-        new Answer(num);
+        new Answer(num, "");
     }
 
     private static Stream<Arguments> goodNumbers() {
@@ -56,7 +56,20 @@ class AnswerTest {
     @MethodSource("goodNumbers")
     @DisplayName("Number getter")
     void getNum(int num) {
-        Answer answer = new Answer(num);
+        Answer answer = new Answer(num, "");
         assertEquals(answer.getNum(),num);
+    }
+
+    @Test
+    void getValue() {
+        Answer answer = new Answer(0,"Штраф 100 рублей");
+        assertEquals("Штраф 100 рублей", answer.getValue());
+    }
+
+    @Test
+    void setValue() {
+        Answer answer = new Answer(0,"Штраф 100 рублей");
+        answer.setValue("Штраф 1000 рублей");
+        assertEquals("Штраф 1000 рублей", answer.getValue());
     }
 }
