@@ -6,7 +6,7 @@ import java.util.Random;
  * Class for answer of this game,
  */
 public class Answer {
-    int num;
+    private int num;
 
     Answer(int n){
         if(n < 0)
@@ -18,6 +18,6 @@ public class Answer {
     }
 
     public int getNum(){
-        return new Random().nextInt();
+        return num;
     }
 }
