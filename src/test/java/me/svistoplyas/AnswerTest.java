@@ -51,4 +51,12 @@ class AnswerTest {
                 Arguments.of(3)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("goodNumbers")
+    @DisplayName("Number getter")
+    void getNum(int num) {
+        Answer answer = new Answer(num);
+        assertEquals(answer.getNum(),num);
+    }
 }
