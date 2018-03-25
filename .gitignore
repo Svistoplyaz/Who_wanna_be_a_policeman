@@ -12,6 +12,7 @@
 .idea/inspectionProfiles
 
 /out
+/target
 *.xlsx
 
 .m2/
