@@ -9,7 +9,7 @@ public class Answer {
     private int num;
     private String value;
 
-    Answer(int n, String _value){
+    public Answer(int n, String _value){
         if(n < 0)
             throw new IndexOutOfBoundsException("Negative number");
 
