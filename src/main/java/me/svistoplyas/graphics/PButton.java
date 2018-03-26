@@ -19,5 +19,6 @@ public class PButton extends JButton{
 
     public void setAnswer(Answer answer) {
         this.answer = answer;
+        setText("<html>"+answer.getValue());
     }
 }
