@@ -12,6 +12,9 @@ public class Question {
     }
 
     public void setIndex(int index) {
-        this.index = index;
+        if(index > PolicemanGame.questionLimit)
+            throw new IndexOutOfBoundsException("Question index bigger than limit");
+        else
+            this.index = index;
     }
 }

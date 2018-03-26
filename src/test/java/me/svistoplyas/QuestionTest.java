@@ -22,7 +22,7 @@ class QuestionTest {
     }
 
     @Test
-    @DisplayName("Question inde setter")
+    @DisplayName("Question index setter")
     void setIndex() {
         Question q = new Question(2);
         q.setIndex(5);
