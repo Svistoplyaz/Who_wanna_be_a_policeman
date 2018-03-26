@@ -72,4 +72,23 @@ class AnswerTest {
         answer.setValue("Штраф 1000 рублей");
         assertEquals("Штраф 1000 рублей", answer.getValue());
     }
+
+    @Test
+    @DisplayName("Big value insert in constructor")
+    void tooLongValue(){
+        StringBuilder s = new StringBuilder();
+        while(s.length() < 500)
+            s.append("1");
+        Assertions.assertThrows(RuntimeException.class, ()-> new Answer(0,s.toString()));
+    }
+
+    @Test
+    @DisplayName("Big value set")
+    void tooLongValue1(){
+        StringBuilder s = new StringBuilder();
+        while(s.length() < 500)
+            s.append("1");
+        Assertions.assertThrows(RuntimeException.class, ()-> new Answer(0,"").setValue(s.toString()));
+
+    }
 }
