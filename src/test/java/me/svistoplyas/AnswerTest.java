@@ -16,7 +16,7 @@ class AnswerTest {
 
     @Test
     @DisplayName("Initialisation")
-    public void AnswerInitialisation(){
+    void AnswerInitialisation(){
         new Answer(0, "");
     }
 
@@ -24,7 +24,7 @@ class AnswerTest {
     @ParameterizedTest
     @MethodSource("badNumbers")
     @DisplayName("Number check")
-    public void badNumberTest(int num){
+    void badNumberTest(int num){
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> new Answer(num, ""));
     }
 
@@ -39,7 +39,7 @@ class AnswerTest {
     @ParameterizedTest
     @MethodSource("goodNumbers")
     @DisplayName("Good numbers check")
-    public void goodNumberTest(int num){
+    void goodNumberTest(int num){
         new Answer(num, "");
     }
 
