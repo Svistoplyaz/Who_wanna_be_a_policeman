@@ -13,10 +13,14 @@ public class Question {
     }
 
     public void addAnswer(Answer answer){
-        if (!hasNum(answer.getNum()))
-            answers.add(answer);
-        else
-            throw new RuntimeException("Already has this num");
+        if(answers.size() > 4)
+            throw new RuntimeException("Too many answers");
+        else {
+            if (!hasNum(answer.getNum()))
+                answers.add(answer);
+            else
+                throw new RuntimeException("Already has this num");
+        }
     }
 
     private boolean hasNum(int num){

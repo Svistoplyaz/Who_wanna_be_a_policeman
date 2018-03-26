@@ -62,4 +62,13 @@ class QuestionTest {
         q.addAnswer(new Answer(1, ""));
         Assertions.assertThrows(RuntimeException.class, () -> q.addAnswer(new Answer(1,"1")));
     }
+
+    @Test
+    @DisplayName("Answer list limit")
+    void addAnswer1(){
+        Question q = new Question(1, "");
+        for(int i = 0; i < 3; i++)
+            q.addAnswer(new Answer(i, ""));
+        Assertions.assertThrows(RuntimeException.class, () -> q.addAnswer(new Answer(4,"1")));
+    }
 }
