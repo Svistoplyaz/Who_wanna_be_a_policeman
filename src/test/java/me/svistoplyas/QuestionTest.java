@@ -78,4 +78,14 @@ class QuestionTest {
             q.addAnswer(new Answer(i, ""));
         Assertions.assertThrows(RuntimeException.class, () -> q.addAnswer(new Answer(4,"1")));
     }
+
+    @Test
+    @DisplayName("Correctness of choosing")
+    void choose(){
+        Question q = new Question(1,"",0);
+        assertTrue(q.choose(0));
+        assertFalse(q.choose(1));
+        assertFalse(q.choose(2));
+        assertFalse(q.choose(3));
+    }
 }

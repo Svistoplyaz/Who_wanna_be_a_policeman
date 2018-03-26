@@ -71,4 +71,8 @@ public class Question {
         else
             this.rightAnswer = rightAnswer;
     }
+
+    public boolean choose(int i){
+        return i == rightAnswer;
+    }
 }
