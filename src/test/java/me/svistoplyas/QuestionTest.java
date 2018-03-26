@@ -44,6 +44,13 @@ class QuestionTest {
     }
 
     @Test
+    @DisplayName("Question setter index lower than 0")
+    void indexLimit2(){
+        Question q = new Question(2, "");
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> q.setIndex(-1));
+    }
+
+    @Test
     @DisplayName("Question value length limit")
     void valueLimit(){
         Question q = new Question(2, "");
