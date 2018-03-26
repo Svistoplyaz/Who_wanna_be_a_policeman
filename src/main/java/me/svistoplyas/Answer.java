@@ -17,7 +17,7 @@ public class Answer {
             throw new IndexOutOfBoundsException("Number is too big");
         num = n;
 
-        value = _value;
+        setValue(_value);
     }
 
     public int getNum(){
@@ -29,6 +29,9 @@ public class Answer {
     }
 
     public void setValue(String value) {
-        this.value = value;
+        if(value.length() < 100)
+            this.value = value;
+        else
+            throw new RuntimeException("Too long value");
     }
 }
