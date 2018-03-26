@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class QuestionTest {
+
     @Test
     @DisplayName("Question initalisation")
     void initTest(){
@@ -52,5 +53,13 @@ class QuestionTest {
             s.append("1");
 
         Assertions.assertThrows(RuntimeException.class, () -> q.setValue(s.toString()));
+    }
+
+    @Test
+    @DisplayName("Answer number repeat test")
+    void addAnswer() {
+        Question q = new Question(1, "");
+        q.addAnswer(new Answer(1, ""));
+        Assertions.assertThrows(RuntimeException.class, () -> q.addAnswer(new Answer(1,"1")));
     }
 }
