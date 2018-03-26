@@ -20,7 +20,6 @@ class AnswerTest {
         new Answer(0, "");
     }
 
-
     @ParameterizedTest
     @MethodSource("badNumbers")
     @DisplayName("Number check")
@@ -34,7 +33,6 @@ class AnswerTest {
                           Arguments.of(4)
         );
     }
-
 
     @ParameterizedTest
     @MethodSource("goodNumbers")
