@@ -5,6 +5,7 @@ import me.svistoplyas.PolicemanGame;
 import me.svistoplyas.Question;
 
 import javax.swing.*;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 //J means Java, P means Police:)
@@ -16,9 +17,11 @@ public class PFrame extends JFrame {
     private ArrayList<PButton> buttons = new ArrayList<>();
 
     public PFrame(PolicemanGame game) {
-        this.game = game;
         setLayout(null);
         this.setLocation(300, 300);
+        this.setTitle("Кто хочет быть миллиционером?");
+
+        this.game = game;
         curQuestion = game.getCurrentQuestion();
 
         levelLabel = new JLabel(game.getLevelName());
@@ -44,7 +47,28 @@ public class PFrame extends JFrame {
         int cur = buttons.size();
         button.setBounds(20 + (cur % 2) * 220, 200 + (cur / 2) * 75, 200, 68);
         this.add(button);
+
+        button.addActionListener(e -> {
+            if (clickButton(button)) {
+                if (!askNextQuestion()) {
+                    JOptionPane.showMessageDialog(this, "Вы прошли игру и достигли звания: " + game.getLevelName() + ", поздравляем!!!");
+                    this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Вы проиграли, не быть вам миллиционером");
+                this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            }
+        });
+
         buttons.add(button);
+    }
+
+    private boolean clickButton(PButton button) {
+        int right = curQuestion.getRightAnswer();
+        if (button.getAnswer().getNum() == right)
+            return true;
+        else
+            return false;
     }
 
     public ArrayList<PButton> getButtons() {
@@ -63,7 +87,7 @@ public class PFrame extends JFrame {
         return levelLabel;
     }
 
-    public void askNextQuestion() {
+    public boolean askNextQuestion() {
         curQuestion = game.getNextQuestion();
         levelLabel.setText(game.getLevelName());
 
@@ -77,6 +101,9 @@ public class PFrame extends JFrame {
             }
 
             repaint();
-        }
+
+            return true;
+        } else
+            return false;
     }
 }

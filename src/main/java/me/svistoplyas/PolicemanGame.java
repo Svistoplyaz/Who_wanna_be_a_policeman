@@ -47,7 +47,7 @@ public class PolicemanGame {
     }
 
     public Question getCurrentQuestion() {
-        if (curQuestion >= questions.length - 1)
+        if (curQuestion > questions.length - 1)
             return null;
 
         return questions[curQuestion];
