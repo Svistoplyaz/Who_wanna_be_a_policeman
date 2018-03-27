@@ -9,6 +9,8 @@ public class PolicemanGame {
     private Question[] questions;
     private int curQuestion = 0;
     private PFrame frame;
+    private String[] levels = new String[]{"Рядовой", "Ефрейтор", "Сержант", "Старшина", "Прапорщик", "Лейтенант",
+            "Майор", "Полковник", "Генерал", "Маршал", "Министр обороны"};
 
     public PolicemanGame() {
         try {
@@ -40,9 +42,17 @@ public class PolicemanGame {
     }
 
     public Question getNextQuestion() {
-        if(curQuestion >= questions.length - 1)
+        if (curQuestion >= questions.length - 1)
             return null;
         curQuestion += 1;
         return questions[curQuestion - 1];
+    }
+
+    public String getLevelName() {
+        return levels[curQuestion % levels.length] + ", количество опыта: " + curQuestion / levels.length;
+    }
+
+    public String getLevelName(int lev) {
+        return levels[lev % levels.length] + ", количество опыта: " + lev / levels.length;
     }
 }

@@ -1,5 +1,6 @@
 package me.svistoplyas;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedWriter;
@@ -43,4 +44,13 @@ class PolicemanGameTest {
         assertEquals("Вопрос2", questions[1].getValue());
         assertTrue(questions[1].choose(3));
     }
+
+    @Test
+    @DisplayName("Is there infinite levels")
+    void getLevelName() {
+        PolicemanGame pGame = new PolicemanGame();
+        for(int i = 0 ; i < 50; i++)
+            System.out.println(pGame.getLevelName(i));
+    }
+
 }
