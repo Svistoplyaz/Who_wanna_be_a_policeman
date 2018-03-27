@@ -17,8 +17,10 @@ public class PFrame extends JFrame {
     private JLabel qLabel;
     private JLabel levelLabel;
     private ArrayList<PButton> buttons = new ArrayList<>();
-    //You can ask higher rank policeman for help, he will tell you right answer with 75%
+    //You can ask higher rank policeman for help, he will tell you right answer with 75% chance
     private JButton askHigher;
+    //You can give bribe for a question, you will get right answer with 90% chance, or with 10% chance you loose
+    private JButton bribe;
 
     public PFrame(PolicemanGame game) {
         setLayout(null);
@@ -50,6 +52,30 @@ public class PFrame extends JFrame {
             });
 
             add(askHigher);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            bribe = new JButton(new ImageIcon(ImageIO.read(PFrame.class.getResourceAsStream("/money.png"))));
+            bribe.setBounds(395, 70, 40, 43);
+
+            bribe.addActionListener(e -> {
+                Random r = new Random();
+                int chance = r.nextInt(100);
+                if (chance < 90){
+                    Answer answer = curQuestion.getAnswers().get(curQuestion.getRightAnswer());
+                    for(PButton button : buttons)
+                        button.setAnswer(answer);
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Вас ловят за руку и садят в тюрьму " +
+                            "за мошенничество, чего вы ожидали начиная карьеру милиционера с коррупции?");
+                    this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                }
+            });
+
+            add(bribe);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
