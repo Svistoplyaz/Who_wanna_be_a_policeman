@@ -72,6 +72,22 @@ class PFrameTest {
         }
     }
 
+    @Test
+    void getLevelLabel() {
+        PolicemanGame game = loadGame();
+        PFrame frame = new PFrame(game);
+        assertEquals("Рядовой, количество опыта: 0", frame.getLevelLabel().getText());
+    }
+
+    @Test
+    void getLevelLabel1() {
+        PolicemanGame game = loadGame();
+        PFrame frame = new PFrame(game);
+        frame.askNextQuestion();
+        assertEquals("Ефрейтор, количество опыта: 0", frame.getLevelLabel().getText());
+    }
+
+
     private PolicemanGame loadGame() {
         PolicemanGame ans = new PolicemanGame();
         return ans;

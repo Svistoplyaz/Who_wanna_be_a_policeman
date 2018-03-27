@@ -12,6 +12,7 @@ public class PFrame extends JFrame {
     private PolicemanGame game;
     private Question curQuestion;
     private JLabel qLabel;
+    private JLabel levelLabel;
     private ArrayList<PButton> buttons = new ArrayList<>();
 
     public PFrame(PolicemanGame game) {
@@ -19,6 +20,10 @@ public class PFrame extends JFrame {
         setLayout(null);
         this.setLocation(300, 300);
         curQuestion = game.getCurrentQuestion();
+
+        levelLabel = new JLabel(game.getLevelName());
+        levelLabel.setBounds(20, 20, 300, 24);
+        add(levelLabel);
 
         qLabel = new JLabel("<html>" + curQuestion.getValue());
         qLabel.setBounds(20, 60, 330, 200);
@@ -54,10 +59,14 @@ public class PFrame extends JFrame {
         return curQuestion;
     }
 
-    public void askNextQuestion() {
-        game.nextQuestion();
+    public JLabel getLevelLabel() {
+        return levelLabel;
+    }
 
-        curQuestion = game.getCurrentQuestion();
+    public void askNextQuestion() {
+        curQuestion = game.getNextQuestion();
+        levelLabel.setText(game.getLevelName());
+
         if (curQuestion != null) {
             qLabel.setText("<html>" + curQuestion.getValue());
 
