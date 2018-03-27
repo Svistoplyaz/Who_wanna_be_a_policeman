@@ -26,6 +26,8 @@ public class PFrame extends JFrame{
         this.setSize(buttons.get(1).getWidth() + buttons.get(1).getX() + 30,
                 buttons.get(buttons.size() - 1).getHeight() + buttons.get(buttons.size() - 1).getY() + 50);
         this.setVisible(true);
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     private void addButton(PButton button){
