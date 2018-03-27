@@ -4,9 +4,11 @@ import me.svistoplyas.Answer;
 import me.svistoplyas.PolicemanGame;
 import me.svistoplyas.Question;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 //J means Java, P means Police:)
 public class PFrame extends JFrame {
@@ -15,6 +17,8 @@ public class PFrame extends JFrame {
     private JLabel qLabel;
     private JLabel levelLabel;
     private ArrayList<PButton> buttons = new ArrayList<>();
+    //You can ask higher rank policeman for help, he will tell you right answer with 75%
+    private JButton askHigher;
 
     public PFrame(PolicemanGame game) {
         setLayout(null);
@@ -31,6 +35,24 @@ public class PFrame extends JFrame {
         qLabel = new JLabel("<html>" + curQuestion.getValue());
         qLabel.setBounds(20, 60, 330, 200);
         add(qLabel);
+
+        try {
+            askHigher = new JButton(new ImageIcon(ImageIO.read(PFrame.class.getResourceAsStream("/higher.png"))));
+            askHigher.setBounds(395, 20, 40, 43);
+
+            askHigher.addActionListener(e -> {
+                Random r = new Random();
+                int chance = r.nextInt(100);
+                if (chance < 75)
+                    JOptionPane.showMessageDialog(this, curQuestion.getAnswers().get(curQuestion.getRightAnswer()).getValue());
+                else
+                    JOptionPane.showMessageDialog(this, curQuestion.getAnswers().get(r.nextInt(4)).getValue());
+            });
+
+            add(askHigher);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
         for (Answer answer : curQuestion.getAnswers()) {
             addButton(new PButton(answer));
