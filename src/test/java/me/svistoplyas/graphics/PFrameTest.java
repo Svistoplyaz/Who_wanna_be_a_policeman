@@ -56,6 +56,22 @@ class PFrameTest {
         assertEquals(game.getQuestions()[1].getValue(),frame.getCurQuestion().getValue());
     }
 
+    @Test
+    @DisplayName("Choose enormous amount of questions")
+    void askNextQuestion1(){
+        PolicemanGame game = loadGame();
+        PFrame frame = new PFrame(game);
+        try {
+            Question previous = frame.getCurQuestion();
+            frame.askNextQuestion();
+            while(!previous.getValue().equals(frame.getCurQuestion().getValue())) {
+                frame.askNextQuestion();
+            }
+        }catch (Exception e){
+            fail("Asked too many questions");
+        }
+    }
+
     private PolicemanGame loadGame() {
         PolicemanGame ans = new PolicemanGame();
         return ans;
