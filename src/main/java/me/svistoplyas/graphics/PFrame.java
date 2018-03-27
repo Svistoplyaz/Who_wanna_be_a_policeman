@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class PFrame extends JFrame{
     private PolicemanGame game;
     private Question curQuestion;
+    private JLabel qLabel;
     private ArrayList<PButton> buttons = new ArrayList<>();
 
     public PFrame(PolicemanGame game){
@@ -18,6 +19,10 @@ public class PFrame extends JFrame{
         setLayout(null);
         this.setLocation(300,300);
         curQuestion = game.getNextQuestion();
+
+        qLabel = new JLabel("<html>" + curQuestion.getValue());
+        qLabel.setBounds(20, 60, 330, 200);
+        add(qLabel);
 
         for(Answer answer : curQuestion.getAnswers()){
             addButton(new PButton(answer));
@@ -39,5 +44,13 @@ public class PFrame extends JFrame{
 
     public ArrayList<PButton> getButtons() {
         return buttons;
+    }
+
+    public JLabel getqLabel() {
+        return qLabel;
+    }
+
+    public Question getCurQuestion() {
+        return curQuestion;
     }
 }

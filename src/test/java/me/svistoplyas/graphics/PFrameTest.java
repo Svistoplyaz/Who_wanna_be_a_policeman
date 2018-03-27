@@ -38,6 +38,15 @@ class PFrameTest {
         assertTrue(set.size() == Question.answerLimit);
     }
 
+
+    @Test
+    @DisplayName("Have filled question label")
+    void labelFilled() {
+        PolicemanGame game = loadGame();
+        PFrame frame = new PFrame(game);
+        assertEquals("<html>"+frame.getCurQuestion().getValue(),frame.getqLabel().getText());
+    }
+
     private PolicemanGame loadGame() {
         PolicemanGame ans = new PolicemanGame();
         return ans;
