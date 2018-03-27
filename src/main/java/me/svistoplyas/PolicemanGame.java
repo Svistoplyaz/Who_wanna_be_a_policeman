@@ -21,7 +21,7 @@ public class PolicemanGame {
         }
     }
 
-    void readSet(File file) throws Exception {
+    public void readSet(File file) throws Exception {
         BufferedReader in = new BufferedReader(new FileReader(file));
 
         int len = Integer.parseInt(in.readLine());

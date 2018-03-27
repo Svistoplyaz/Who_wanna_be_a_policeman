@@ -5,6 +5,9 @@ import me.svistoplyas.Question;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,9 +90,45 @@ class PFrameTest {
         assertEquals("Ефрейтор, количество опыта: 0", frame.getLevelLabel().getText());
     }
 
+    @Test
+    @DisplayName("Trying to win by imitating clicks")
+    void clickButton() throws Exception{
+        PolicemanGame game = new PolicemanGame();
+        PFrame frame = new PFrame(game);
+
+        int[] rightAnswers = new int[game.getQuestions().length];
+        for(int i = 0; i < rightAnswers.length; i++){
+            rightAnswers[i] = game.getQuestions()[i].getRightAnswer();
+        }
+
+        for(int i = 0 ; i < 6; i++) {
+            if (!frame.clickButton(frame.getButtons().get(rightAnswers[i])))
+                fail("Can't win game with this combination");
+            frame.askNextQuestion();
+        }
+    }
+
+    @Test
+    @DisplayName("Trying to loose by imitating clicks")
+    void clickButton1() throws Exception{
+        PolicemanGame game = new PolicemanGame();
+        PFrame frame = new PFrame(game);
+
+        if(frame.clickButton(frame.getButtons().get(frame.getCurQuestion().getRightAnswer() + 1)))
+            fail("Can win game with wrong answer");
+    }
+
 
     private PolicemanGame loadGame() {
         PolicemanGame ans = new PolicemanGame();
+        File file = new File("set1.in");
+
+        try {
+            ans.readSet(file);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return ans;
     }
 
