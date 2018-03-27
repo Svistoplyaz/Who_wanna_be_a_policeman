@@ -10,11 +10,11 @@ public class PolicemanGame {
     private int curQuestion = 0;
     private PFrame frame;
 
-    public PolicemanGame(){
+    public PolicemanGame() {
         try {
             readSet(new File("set1.in"));
             frame = new PFrame(this);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -26,11 +26,11 @@ public class PolicemanGame {
         questions = new Question[len];
 
         String[] str;
-        for(int i = 0; i < len; i++){
+        for (int i = 0; i < len; i++) {
             str = in.readLine().split(" ");
             questions[i] = new Question(i, str[0], Integer.parseInt(str[1]));
 
-            for(int j = 0; j < Question.answerLimit; j++)
+            for (int j = 0; j < Question.answerLimit; j++)
                 questions[i].addAnswer(new Answer(j, in.readLine()));
         }
     }
@@ -39,7 +39,9 @@ public class PolicemanGame {
         return questions;
     }
 
-    public Question getNextQuestion(){
+    public Question getNextQuestion() {
+        if(curQuestion >= questions.length - 1)
+            return null;
         curQuestion += 1;
         return questions[curQuestion - 1];
     }

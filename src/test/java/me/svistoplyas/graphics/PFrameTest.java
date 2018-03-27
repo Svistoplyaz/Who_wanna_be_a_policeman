@@ -63,8 +63,7 @@ class PFrameTest {
         PFrame frame = new PFrame(game);
         try {
             Question previous = frame.getCurQuestion();
-            frame.askNextQuestion();
-            while(!previous.getValue().equals(frame.getCurQuestion().getValue())) {
+            while(previous != null) {
                 frame.askNextQuestion();
                 previous = frame.getCurQuestion();
             }
