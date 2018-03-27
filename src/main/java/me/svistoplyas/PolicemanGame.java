@@ -30,7 +30,12 @@ public class PolicemanGame {
         String[] str;
         for (int i = 0; i < len; i++) {
             str = in.readLine().split(" ");
-            questions[i] = new Question(i, str[0], Integer.parseInt(str[1]));
+
+            for(int j = 1 ; j < str.length - 1; j++){
+                str[0] += " " + str[j];
+            }
+            
+            questions[i] = new Question(i, str[0], Integer.parseInt(str[str.length - 1]));
 
             for (int j = 0; j < Question.answerLimit; j++)
                 questions[i].addAnswer(new Answer(j, in.readLine()));
