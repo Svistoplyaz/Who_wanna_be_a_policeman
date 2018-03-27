@@ -40,6 +40,7 @@ public class PolicemanGame {
     }
 
     public Question getNextQuestion(){
-        return questions[curQuestion];
+        curQuestion += 1;
+        return questions[curQuestion - 1];
     }
 }

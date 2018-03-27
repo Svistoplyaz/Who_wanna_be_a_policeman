@@ -53,4 +53,17 @@ public class PFrame extends JFrame{
     public Question getCurQuestion() {
         return curQuestion;
     }
+
+    public void askNextQuestion(){
+        curQuestion = game.getNextQuestion();
+        qLabel.setText("<html>" + curQuestion.getValue());
+
+        int i = 0;
+        for(Answer answer : curQuestion.getAnswers()){
+            buttons.get(i).setAnswer(answer);
+            i++;
+        }
+
+        repaint();
+    }
 }

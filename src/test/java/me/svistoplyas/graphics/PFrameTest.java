@@ -47,6 +47,15 @@ class PFrameTest {
         assertEquals("<html>"+frame.getCurQuestion().getValue(),frame.getqLabel().getText());
     }
 
+    @Test
+    @DisplayName("Choose next question")
+    void askNextQuestion() {
+        PolicemanGame game = loadGame();
+        PFrame frame = new PFrame(game);
+        frame.askNextQuestion();
+        assertEquals(game.getQuestions()[1].getValue(),frame.getCurQuestion().getValue());
+    }
+
     private PolicemanGame loadGame() {
         PolicemanGame ans = new PolicemanGame();
         return ans;
