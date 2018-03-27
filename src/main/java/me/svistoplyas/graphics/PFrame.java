@@ -18,7 +18,7 @@ public class PFrame extends JFrame {
         this.game = game;
         setLayout(null);
         this.setLocation(300, 300);
-        curQuestion = game.getNextQuestion();
+        curQuestion = game.getCurrentQuestion();
 
         qLabel = new JLabel("<html>" + curQuestion.getValue());
         qLabel.setBounds(20, 60, 330, 200);
@@ -55,7 +55,9 @@ public class PFrame extends JFrame {
     }
 
     public void askNextQuestion() {
-        curQuestion = game.getNextQuestion();
+        game.nextQuestion();
+
+        curQuestion = game.getCurrentQuestion();
         if (curQuestion != null) {
             qLabel.setText("<html>" + curQuestion.getValue());
 

@@ -41,11 +41,20 @@ public class PolicemanGame {
         return questions;
     }
 
-    public Question getNextQuestion() {
+    public Question getCurrentQuestion() {
         if (curQuestion >= questions.length - 1)
             return null;
-        curQuestion += 1;
-        return questions[curQuestion - 1];
+
+        return questions[curQuestion];
+    }
+
+    public void nextQuestion(){
+        curQuestion++;
+    }
+
+    public Question getNextQuestion(){
+        nextQuestion();
+        return getCurrentQuestion();
     }
 
     public String getLevelName() {
