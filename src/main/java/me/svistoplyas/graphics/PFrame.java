@@ -65,10 +65,7 @@ public class PFrame extends JFrame {
 
     boolean clickButton(PButton button) {
         int right = curQuestion.getRightAnswer();
-        if (button.getAnswer().getNum() == right)
-            return true;
-        else
-            return false;
+        return button.getAnswer().getNum() == right;
     }
 
     public ArrayList<PButton> getButtons() {
