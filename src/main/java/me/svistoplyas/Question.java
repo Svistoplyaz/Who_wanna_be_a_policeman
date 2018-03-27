@@ -3,7 +3,7 @@ package me.svistoplyas;
 import java.util.ArrayList;
 
 public class Question {
-    static final int answerLimit = 4;
+    public static final int answerLimit = 4;
 
     int index;
     String value;
@@ -70,6 +70,10 @@ public class Question {
             throw new IndexOutOfBoundsException("Right Answer index lower than 0");
         else
             this.rightAnswer = rightAnswer;
+    }
+
+    public ArrayList<Answer> getAnswers(){
+        return answers;
     }
 
     public boolean choose(int i){
