@@ -1,10 +1,23 @@
 package me.svistoplyas;
 
+import me.svistoplyas.graphics.PFrame;
+
 import java.io.*;
 
 public class PolicemanGame {
     static int questionLimit = 10;
-    Question[] questions;
+    private Question[] questions;
+    private int curQuestion = 0;
+    private PFrame frame;
+
+    public PolicemanGame(){
+        try {
+            readSet(new File("set1.in"));
+            frame = new PFrame(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     void readSet(File file) throws Exception {
         BufferedReader in = new BufferedReader(new FileReader(file));
@@ -24,5 +37,9 @@ public class PolicemanGame {
 
     public Question[] getQuestions() {
         return questions;
+    }
+
+    public Question getNextQuestion(){
+        return questions[curQuestion];
     }
 }
