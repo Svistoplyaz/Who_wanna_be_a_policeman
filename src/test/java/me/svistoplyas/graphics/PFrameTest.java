@@ -66,6 +66,7 @@ class PFrameTest {
             frame.askNextQuestion();
             while(!previous.getValue().equals(frame.getCurQuestion().getValue())) {
                 frame.askNextQuestion();
+                previous = frame.getCurQuestion();
             }
         }catch (Exception e){
             fail("Asked too many questions");

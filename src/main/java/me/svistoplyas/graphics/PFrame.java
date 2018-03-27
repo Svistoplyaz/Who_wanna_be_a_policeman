@@ -55,15 +55,17 @@ public class PFrame extends JFrame{
     }
 
     public void askNextQuestion(){
-        curQuestion = game.getNextQuestion();
-        qLabel.setText("<html>" + curQuestion.getValue());
+        if (curQuestion != game.getQuestions()[game.getQuestions().length - 1]) {
+            curQuestion = game.getNextQuestion();
+            qLabel.setText("<html>" + curQuestion.getValue());
 
-        int i = 0;
-        for(Answer answer : curQuestion.getAnswers()){
-            buttons.get(i).setAnswer(answer);
-            i++;
+            int i = 0;
+            for (Answer answer : curQuestion.getAnswers()) {
+                buttons.get(i).setAnswer(answer);
+                i++;
+            }
+
+            repaint();
         }
-
-        repaint();
     }
 }
