@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Who_wanna_be_a_policeman" />
+        <module name="TDD_PolicemanGame" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Who_wanna_be_a_policeman" target="1.8" />
+      <module name="TDD_PolicemanGame" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
