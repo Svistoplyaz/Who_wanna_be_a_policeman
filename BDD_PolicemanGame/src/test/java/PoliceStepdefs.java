@@ -1,4 +1,5 @@
 import cucumber.api.PendingException;
+import cucumber.api.java.gl.E;
 import cucumber.api.java8.En;
 
 public class PoliceStepdefs implements En {
@@ -9,7 +10,11 @@ public class PoliceStepdefs implements En {
             this.policemanGame = new PolicemanGame();
         });
         And("^I load my set of question from this \"([^\"]*)\" file$", (String arg0) -> {
-            policemanGame.load(arg0);
+            try {
+                policemanGame.load(arg0);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         });
     }
 }
