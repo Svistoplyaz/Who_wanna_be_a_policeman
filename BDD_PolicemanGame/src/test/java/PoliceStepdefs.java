@@ -8,5 +8,8 @@ public class PoliceStepdefs implements En {
         Given("^I have my policeman game$", () -> {
             this.policemanGame = new PolicemanGame();
         });
+        And("^I load my set of question from this \"([^\"]*)\" file$", (String arg0) -> {
+            policemanGame.load(arg0);
+        });
     }
 }
