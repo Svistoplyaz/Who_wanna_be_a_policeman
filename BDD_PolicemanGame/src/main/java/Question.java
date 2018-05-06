@@ -18,7 +18,10 @@ public class Question {
         if(answers.size() + 1 > answerLimit)
             throw new RuntimeException("Too many answers");
         else {
-            answers.add(answer);
+            if (!hasNum(answer.getNum()))
+                answers.add(answer);
+            else
+                throw new RuntimeException("Already has this num");
         }
     }
 
