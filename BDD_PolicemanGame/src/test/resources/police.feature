@@ -35,3 +35,17 @@ Feature: PolicemanGame
     When I load my set of question from this "set1.in" file
     Then number of questions must be more then 0
     And any existing question must not let add more answer to it
+
+
+  Scenario Outline: adding answers to new question
+    Given I have empty quesion
+    When I creating answer with number "<number>"
+    Then I expecting result "<result>"
+
+    Examples:
+      |number | result  |
+      |0      | true    |
+      |1      | true    |
+      |1      | false   |
+      |2      | true    |
+      |3      | true    |

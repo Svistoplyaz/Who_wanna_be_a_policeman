@@ -72,5 +72,19 @@ public class PoliceStepdefs implements En {
 
             Assertions.assertThrows(RuntimeException.class, () -> curQuestion.addAnswer(new Answer(0, "")));
         });
+        Given("^I have empty quesion$", () -> {
+            curQuestion = new Question(0 , "", 0);
+        });
+        When("^I creating answer with number \"([^\"]*)\"$", (String arg0) -> {
+            curAnswer = new Answer(Integer.parseInt(arg0), "");
+        });
+        Then("^I expecting result \"([^\"]*)\"$", (String arg0) -> {
+            if(Boolean.parseBoolean(arg0)){
+                curQuestion.addAnswer(curAnswer);
+            }else{
+                curQuestion.addAnswer(curAnswer);
+                Assertions.assertThrows(RuntimeException.class, () -> curQuestion.addAnswer(curAnswer));
+            }
+        });
     }
 }
