@@ -49,5 +49,14 @@ public class PoliceStepdefs implements En {
         Then("^result will be this \"([^\"]*)\"$", (String arg0) -> {
             Assert.assertEquals(curQuestion.rightAnswer == curAnswer.getNum(), Boolean.parseBoolean(arg0));
         });
+        Then("^Question length must be less then (\\d+)$", (Integer arg0) -> {
+            curQuestion = policemanGame.questions[0];
+
+            StringBuilder s = new StringBuilder();
+            while(s.length() < 500)
+                s.append("1");
+
+            Assertions.assertThrows(RuntimeException.class, () -> curQuestion.setValue(s.toString()));
+        });
     }
 }

@@ -10,6 +10,7 @@ Feature: PolicemanGame
   Scenario Outline: checking assignment
     Given I have my policeman game
     When I load my set of question from this "set1.in" file
+    Then number of questions must be more then 0
     And you see question number "<question>"
     And you choose answer number "<answer>"
     Then result will be this "<result>"
@@ -20,3 +21,9 @@ Feature: PolicemanGame
       |1        |3      |true   |
       |2        |1      |false  |
       |3        |2      |false  |
+
+  Scenario: setting limits
+    Given I have my policeman game
+    When I load my set of question from this "set1.in" file
+    Then number of questions must be more then 0
+    And Question length must be less then 400
