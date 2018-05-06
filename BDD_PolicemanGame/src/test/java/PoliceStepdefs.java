@@ -67,5 +67,10 @@ public class PoliceStepdefs implements En {
 
             Assertions.assertThrows(RuntimeException.class, () -> curAnswer.setValue(s.toString()));
         });
+        And("^any existing question must not let add more answer to it$", () -> {
+            curQuestion = policemanGame.questions[0];
+
+            Assertions.assertThrows(RuntimeException.class, () -> curQuestion.addAnswer(new Answer(0, "")));
+        });
     }
 }
