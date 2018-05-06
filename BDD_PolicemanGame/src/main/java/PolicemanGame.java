@@ -4,6 +4,8 @@ import java.io.FileReader;
 
 public class PolicemanGame {
     private File file;
+    public Question[] questions;
+    static int questionLimit = 10;
 
     public PolicemanGame() {
 
@@ -12,5 +14,19 @@ public class PolicemanGame {
     public void load(String s) throws Exception{
         BufferedReader in = new BufferedReader(new FileReader(s));
 
+        int len = Integer.parseInt(in.readLine());
+        questions = new Question[len];
+
+        String[] str;
+        for (int i = 0; i < len; i++) {
+            str = in.readLine().split(" ");
+
+            for(int j = 1 ; j < str.length - 1; j++){
+                str[0] += " " + str[j];
+            }
+
+            questions[i] = new Question(i, str[0]);
+
+        }
     }
 }
