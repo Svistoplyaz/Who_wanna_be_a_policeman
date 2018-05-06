@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 
 public class PoliceStepdefs implements En {
     private PolicemanGame policemanGame;
+    private Question curQuestion;
+    private Answer curAnswer;
 
     public PoliceStepdefs() {
         Given("^I have my policeman game$", () -> {
@@ -37,6 +39,15 @@ public class PoliceStepdefs implements En {
                     Assertions.fail("Question has invalid right answer");
                 }
             }
+        });
+        And("^you see question number \"([^\"]*)\"$", (String arg0) -> {
+            curQuestion = policemanGame.questions[Integer.parseInt(arg0)];
+        });
+        And("^you choose answer number \"([^\"]*)\"$", (String arg0) -> {
+            curAnswer = curQuestion.answers.get(Integer.parseInt(arg0));
+        });
+        Then("^result will be this \"([^\"]*)\"$", (String arg0) -> {
+            Assert.assertEquals(curQuestion.rightAnswer == curAnswer.getNum(), Boolean.parseBoolean(arg0));
         });
     }
 }
