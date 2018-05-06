@@ -51,10 +51,7 @@ public class Question {
     }
 
     public void setValue(String value) {
-        if(value.length() > 400)
-            throw new RuntimeException();
-        else
-            this.value = value;
+        this.value = value;
     }
 
     public int getRightAnswer() {
