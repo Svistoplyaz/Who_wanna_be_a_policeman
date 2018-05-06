@@ -29,5 +29,14 @@ public class PoliceStepdefs implements En {
                     Assertions.fail("Question has not " + arg0 + " answers");
             }
         });
+        And("^every question has right answer$", () -> {
+            int len = policemanGame.questions.length;
+            for(int i = 0; i < len; i++) {
+                int answer = policemanGame.questions[i].rightAnswer;
+                if (answer != 0 && answer != 1 && answer != 2 && answer != 3){
+                    Assertions.fail("Question has invalid right answer");
+                }
+            }
+        });
     }
 }
