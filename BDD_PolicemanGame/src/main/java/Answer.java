@@ -25,6 +25,9 @@ public class Answer {
     }
 
     public void setValue(String value) {
-        this.value = value;
+        if(value.length() < 100)
+            this.value = value;
+        else
+            throw new RuntimeException("Too long value");
     }
 }
