@@ -15,7 +15,11 @@ public class Question {
     }
 
     public void addAnswer(Answer answer){
-        answers.add(answer);
+        if(answers.size() + 1 > answerLimit)
+            throw new RuntimeException("Too many answers");
+        else {
+            answers.add(answer);
+        }
     }
 
     private boolean hasNum(int num){
