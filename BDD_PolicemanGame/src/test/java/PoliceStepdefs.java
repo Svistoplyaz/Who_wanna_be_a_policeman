@@ -13,14 +13,14 @@ public class PoliceStepdefs implements En {
         });
         When("^I load my set of question from this \"([^\"]*)\" file$", (String arg0) -> {
             try {
-                policemanGame.load(arg0);
+                policemanGame.load("D:\\WorkPlaces\\IdeaProjects\\Verify\\Who_wanna_be_a_policeman\\BDD_PolicemanGame\\" + arg0);
             }catch (Exception e){
                 e.printStackTrace();
             }
         });
         Then("^number of questions must be more then (\\d+)$", (Integer arg0) -> {
             if(policemanGame.questions.length <= arg0)
-                Assertions.fail("Less than " + (arg0+1) + "questions")
+                Assertions.fail("Less than " + (arg0+1) + "questions");
         });
     }
 }
