@@ -25,7 +25,7 @@ public class PoliceStepdefs implements En {
         And("^questions have (\\d+) answers$", (Integer arg0) -> {
             int len = policemanGame.questions.length;
             for(int i = 0; i < len; i++) {
-                if (policemanGame.questions[i].answers.size != arg0)
+                if (policemanGame.questions[i].answers.size() != arg0)
                     Assertions.fail("Question has not " + arg0 + " answers");
             }
         });

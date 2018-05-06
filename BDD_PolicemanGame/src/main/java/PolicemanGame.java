@@ -25,7 +25,10 @@ public class PolicemanGame {
                 str[0] += " " + str[j];
             }
 
-            questions[i] = new Question(i, str[0]);
+            questions[i] = new Question(i, str[0], Integer.parseInt(str[str.length - 1]));
+
+            for (int j = 0; j < Question.answerLimit; j++)
+                questions[i].addAnswer(new Answer(j, in.readLine()));
 
         }
     }
