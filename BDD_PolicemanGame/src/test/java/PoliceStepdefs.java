@@ -53,10 +53,19 @@ public class PoliceStepdefs implements En {
             curQuestion = policemanGame.questions[0];
 
             StringBuilder s = new StringBuilder();
-            while(s.length() < arg0)
+            while(s.length() <= arg0)
                 s.append("1");
 
             Assertions.assertThrows(RuntimeException.class, () -> curQuestion.setValue(s.toString()));
+        });
+        And("^Answer length must be less then (\\d+)$", (Integer arg0) -> {
+            curAnswer = policemanGame.questions[0].answers.get(0);
+
+            StringBuilder s = new StringBuilder();
+            while(s.length() <= arg0)
+                s.append("1");
+
+            Assertions.assertThrows(RuntimeException.class, () -> curAnswer.setValue(s.toString()));
         });
     }
 }

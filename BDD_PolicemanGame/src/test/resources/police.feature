@@ -27,3 +27,4 @@ Feature: PolicemanGame
     When I load my set of question from this "set1.in" file
     Then number of questions must be more then 0
     And Question length must be less then 400
+    And Answer length must be less then 100
