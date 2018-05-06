@@ -1,5 +1,3 @@
-import cucumber.api.PendingException;
-import cucumber.api.java.gl.E;
 import cucumber.api.java8.En;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
